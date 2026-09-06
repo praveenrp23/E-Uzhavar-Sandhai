@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient (Rich Deep Tamil Nadu Forest Green) -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#083818"/>
+      <stop offset="60%" stop-color="#0a4b20"/>
+      <stop offset="100%" stop-color="#042610"/>
+    </linearGradient>
+
+    <!-- Basket Tone Gradients -->
+    <linearGradient id="basketHandle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe4a0"/>
+      <stop offset="50%" stop-color="#f5ba58"/>
+      <stop offset="100%" stop-color="#d68b25"/>
+    </linearGradient>
+    <linearGradient id="basketWood" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e9a444"/>
+      <stop offset="50%" stop-color="#fcd078"/>
+      <stop offset="100%" stop-color="#df8e26"/>
+    </linearGradient>
+
+    <!-- Pumpkin Gradient -->
+    <linearGradient id="pumpkinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="45%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#9a3412"/>
+    </linearGradient>
+
+    <!-- Tomato / Beet Gradient -->
+    <linearGradient id="tomatoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f87171"/>
+      <stop offset="35%" stop-color="#dc2626"/>
+      <stop offset="85%" stop-color="#991b1b"/>
+      <stop offset="100%" stop-color="#580f15"/>
+    </linearGradient>
+    <linearGradient id="beetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#db2777"/>
+      <stop offset="50%" stop-color="#831843"/>
+      <stop offset="100%" stop-color="#4a0429"/>
+    </linearGradient>
+
+    <!-- Carrot Gradient -->
+    <linearGradient id="carrotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdba74"/>
+      <stop offset="60%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#c2410c"/>
+    </linearGradient>
+
+    <!-- Radish Gradient -->
+    <linearGradient id="radishGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="70%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+
+    <!-- Vibrant Leaves Gradient -->
+    <linearGradient id="leafGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#15803d"/>
+      <stop offset="60%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#86efac"/>
+    </linearGradient>
+    <linearGradient id="leafDark" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f5128"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="badgeShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Clean App Badge Background -->
+  <rect width="120" height="120" rx="26" fill="url(#bgGradient)"/>
+  
+  <!-- Subtle Inner Border Accent -->
+  <rect x="3.5" y="3.5" width="113" height="113" rx="23" fill="none" stroke="#22c55e" stroke-width="1.2" stroke-opacity="0.3"/>
+
+  <!-- ==================== BASKET HANDLE (ARCH) ==================== -->
+  <!-- Elegant Arched Wooden Basket Handle framing the top -->
+  <path d="M 28 66 C 27 30 42 16 60 16 C 78 16 93 30 92 66" 
+        fill="none" stroke="url(#basketHandle)" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Handle Inner Highlight Curve -->
+  <path d="M 33 54 C 36 26 47 18 60 18 C 73 18 84 26 87 54" 
+        fill="none" stroke="#fff5d0" stroke-width="1.2" stroke-linecap="round" opacity="0.65"/>
+
+  <!-- ==================== PRODUCE INSIDE BASKET ==================== -->
+  <g filter="url(#badgeShadow)">
+
+    <!-- 1. Background Leaf Foliage (Deep Layers) -->
+    <!-- Left leafy greens -->
+    <path d="M 22 55 C 16 48 24 38 34 44 C 38 47 38 53 35 56 C 30 55 25 56 22 55 Z" fill="url(#leafDark)"/>
+    <path d="M 17 62 C 12 55 22 47 30 51 C 32 54 30 58 26 62 C 22 62 19 63 17 62 Z" fill="url(#leafGrad)"/>
+    
+    <!-- Right leafy fronds behind pumpkin -->
+    <path d="M 86 52 C 92 43 102 46 98 56 C 96 59 90 62 86 60 Z" fill="url(#leafDark)"/>
+    <path d="M 94 62 C 102 54 105 65 96 70 C 92 70 90 66 94 62 Z" fill="url(#leafGrad)"/>
+
+    <!-- Center/Top Greens (Carrot & Radish Tops) -->
+    <path d="M 52 38 C 50 28 58 28 60 34 C 61 38 56 42 52 38 Z" fill="url(#leafGrad)"/>
+    <path d="M 64 36 C 66 26 73 29 71 36 C 69 41 64 41 64 36 Z" fill="url(#leafDark)"/>
+    <path d="M 45 42 C 41 33 49 32 52 38 C 52 42 47 44 45 42 Z" fill="url(#leafGrad)"/>
+
+    <!-- 2. Carrots (Orange Peaks) -->
+    <g>
+      <path d="M 59 36 L 66 36 C 67 36 68 38 67 40 L 64 49 L 60 49 L 58 40 C 57 38 58 36 59 36 Z" fill="url(#carrotGrad)"/>
+      <ellipse cx="63" cy="36" rx="4" ry="1.5" fill="#fcd34d"/>
+      <path d="M 54 40 L 60 40 L 58 49 L 55 49 Z" fill="url(#carrotGrad)"/>
+    </g>
+
+    <!-- 3. Fresh White Daikon Radishes / Onions (Distinctive Crisp White) -->
+    <!-- Left Radish -->
+    <g>
+      <path d="M 37 46 C 41 43 47 46 48 51 C 49 57 43 65 40 68 C 36 63 32 54 34 49 C 34 47 35 46 37 46 Z" fill="url(#radishGrad)"/>
+      <path d="M 37 46 C 39 49 39 54 38 61" stroke="#e2e8f0" stroke-width="0.8" fill="none"/>
+      <!-- Radish Green Leaf crown -->
+      <path d="M 38 46 C 37 40 43 40 44 45 Z" fill="#22c55e"/>
+    </g>
+
+    <!-- Second White Bulb / Radish -->
+    <g>
+      <path d="M 44 48 C 48 45 53 48 54 53 C 55 58 50 66 47 69 C 43 64 41 57 42 52 C 42 49 43 48 44 48 Z" fill="url(#radishGrad)"/>
+      <path d="M 44 48 C 46 51 46 56 45 63" stroke="#e2e8f0" stroke-width="0.8" fill="none"/>
+      <!-- Specular shine on radish -->
+      <path d="M 46 51 C 48 51 49 53 49 56" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+    </g>
+
+    <!-- 4. Plump Ribbed Orange Pumpkin (Right focal point) -->
+    <g>
+      <!-- Base & Ribs -->
+      <ellipse cx="80" cy="59" rx="16" ry="14" fill="#9a3412"/>
+      <!-- Outer lobes -->
+      <path d="M 68 62 C 67 52 73 47 77 47 C 74 53 74 63 76 68 C 72 68 69 66 68 62 Z" fill="#ea580c"/>
+      <path d="M 92 62 C 93 52 87 47 83 47 C 86 53 86 63 84 68 C 88 68 91 66 92 62 Z" fill="#c2410c"/>
+      <!-- Center Segments -->
+      <path d="M 75 47 C 78 45 83 45 85 47 C 87 53 87 64 84 69 C 80 70 79 70 76 69 C 74 64 74 53 75 47 Z" fill="url(#pumpkinGrad)"/>
+      <!-- Highlights on pumpkin ribs -->
+      <path d="M 78 48 C 77 53 77 62 78 66" stroke="#fdba74" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M 83 48 C 84 53 84 62 83 66" stroke="#fed7aa" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+      <!-- Pumpkin Stem -->
+      <path d="M 78 47 C 78 42 82 41 81 45 Z" fill="#15803d"/>
+    </g>
+
+    <!-- 5. Fresh Ruby-Red Tomatoes & Crimson Beets (Foreground Produce) -->
+    <!-- Large Center Tomato -->
+    <g>
+      <circle cx="61" cy="58" r="10.5" fill="url(#tomatoGrad)"/>
+      <!-- Calyx / Green star sepals on tomato -->
+      <path d="M 61 48 L 62 52 L 66 50 L 63 53 L 66 56 L 62 55 L 61 59 L 60 55 L 56 56 L 59 53 L 56 50 L 60 52 Z" fill="#22c55e"/>
+      <circle cx="61" cy="52" r="1" fill="#15803d"/>
+      <!-- Glossy Reflection curved highlight -->
+      <path d="M 55 54 C 54 58 56 63 59 65" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.85"/>
+    </g>
+
+    <!-- Smaller Foreground Cherry Tomato / Plum Tomato -->
+    <g>
+      <circle cx="50" cy="62" r="8" fill="url(#tomatoGrad)"/>
+      <!-- Calyx -->
+      <path d="M 50 55 L 51 58 L 54 57 L 52 59 L 54 61 L 51 60 L 50 63 L 49 60 L 46 61 L 48 59 L 46 57 L 49 58 Z" fill="#4ade80"/>
+      <!-- Glossy highlight -->
+      <path d="M 45 60 C 45 63 47 66 49 67" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.8"/>
+    </g>
+
+    <!-- Rich Beet / Eggplant peeking between tomatoes and pumpkin -->
+    <g>
+      <path d="M 69 57 C 73 53 78 55 78 61 C 77 66 73 69 68 68 C 66 65 67 60 69 57 Z" fill="url(#beetGrad)"/>
+      <path d="M 72 56 C 75 57 76 60 75 64" stroke="#f472b6" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.75"/>
+    </g>
+
+    <!-- Spilling Leaf Frond in Foreground -->
+    <path d="M 24 64 C 18 64 22 71 31 71 C 36 71 39 67 36 65 C 31 66 26 65 24 64 Z" fill="url(#leafGrad)"/>
+    <path d="M 79 68 C 88 66 94 72 87 74 C 82 74 79 71 79 68 Z" fill="url(#leafGrad)"/>
+  </g>
+
+  <!-- ==================== WOVEN WICKER BASKET ==================== -->
+  <g filter="url(#badgeShadow)">
+    <!-- Basket Rim / Top Lip (Curved wooden rim) -->
+    <path d="M 25 68 C 25 65 95 65 95 68 C 95 72 25 72 25 68 Z" fill="#603408"/>
+    <path d="M 26 67 C 32 64 88 64 94 67 L 93 70 C 87 67 33 67 27 70 Z" fill="url(#basketWood)"/>
+
+    <!-- Basket Body Silhouette (Dark undertone for weave depth) -->
+    <path d="M 28 71 L 33 94 C 34 97 38 99 43 100 L 77 100 C 82 99 86 97 87 94 L 92 71 Z" fill="#422006"/>
+
+    <!-- Woven Reed Slats (Layered Horizontal Weaves) -->
+    <!-- Row 1 -->
+    <g fill="url(#basketWood)">
+      <rect x="30" y="72" width="10" height="3.5" rx="1.5"/>
+      <rect x="42" y="72" width="11" height="3.5" rx="1.5"/>
+      <rect x="55" y="72" width="11" height="3.5" rx="1.5"/>
+      <rect x="68" y="72" width="11" height="3.5" rx="1.5"/>
+      <rect x="81" y="72" width="9" height="3.5" rx="1.5"/>
+    </g>
+
+    <!-- Row 2 (Offset Weave) -->
+    <g fill="url(#basketWood)">
+      <rect x="32" y="77.5" width="8" height="3.5" rx="1.5"/>
+      <rect x="42" y="77.5" width="11" height="3.5" rx="1.5"/>
+      <rect x="55" y="77.5" width="11" height="3.5" rx="1.5"/>
+      <rect x="68" y="77.5" width="11" height="3.5" rx="1.5"/>
+      <rect x="81" y="77.5" width="7" height="3.5" rx="1.5"/>
+    </g>
+
+    <!-- Row 3 -->
+    <g fill="url(#basketWood)">
+      <rect x="34" y="83" width="9" height="3.5" rx="1.5"/>
+      <rect x="45" y="83" width="11" height="3.5" rx="1.5"/>
+      <rect x="58" y="83" width="11" height="3.5" rx="1.5"/>
+      <rect x="71" y="83" width="9" height="3.5" rx="1.5"/>
+    </g>
+
+    <!-- Row 4 (Offset Weave near taper) -->
+    <g fill="url(#basketWood)">
+      <rect x="36" y="88.5" width="9" height="3.5" rx="1.5"/>
+      <rect x="47" y="88.5" width="11" height="3.5" rx="1.5"/>
+      <rect x="60" y="88.5" width="11" height="3.5" rx="1.5"/>
+      <rect x="73" y="88.5" width="8" height="3.5" rx="1.5"/>
+    </g>
+
+    <!-- Row 5 (Bottom Base) -->
+    <g fill="url(#basketWood)">
+      <rect x="40" y="94" width="11" height="3.5" rx="1.5"/>
+      <rect x="53" y="94" width="11" height="3.5" rx="1.5"/>
+      <rect x="66" y="94" width="11" height="3.5" rx="1.5"/>
+    </g>
+
+    <!-- Basket Base Rim / Stand -->
+    <path d="M 42 99.5 C 50 101.5 70 101.5 78 99.5 L 76 102 C 69 103 51 103 44 102 Z" fill="#f5ba58"/>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix E-Uzhavar Sandhai",
+  "description": "Tamil Nadu Digital Farmers Market (E-Uzhavar Sandhai) connecting Consumers, Bulk Buyers, FPOs, and Logistics Partners.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
