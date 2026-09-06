@@ -51,7 +51,7 @@ interface MarketContextType {
     phone: string;
     buyerName: string;
     paymentMethod: 'Simulated COD / Direct Farmer Remittance' | 'Virtual AgriCredit PO';
-  }) => Promise<Order | null> | Order | null;
+  }) => Promise<Order | null>;
   // FPO actions
   addProduceListing: (item: Omit<ProduceItem, 'id' | 'fpoId' | 'fpoName'>) => Promise<void> | void;
   updateProduceListing: (id: string, updates: Partial<ProduceItem>) => Promise<void> | void;

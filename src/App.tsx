@@ -14,6 +14,7 @@ import { ThemeToggle } from './components/common/ThemeToggle';
 import { ApiDatabaseStatusModal } from './components/common/ApiDatabaseStatusModal';
 import { UserRole } from './types';
 import { ShoppingBag, ShieldCheck, Heart, Database } from 'lucide-react';
+import { ErrorBoundary } from './components/common/ErrorBoundary';
 
 const MainLayout: React.FC = () => {
   const { currentRole, currentUser, refreshData } = useMarket();
@@ -169,8 +170,10 @@ const MainLayout: React.FC = () => {
 
 export default function App() {
   return (
-    <MarketProvider>
-      <MainLayout />
-    </MarketProvider>
+    <ErrorBoundary>
+      <MarketProvider>
+        <MainLayout />
+      </MarketProvider>
+    </ErrorBoundary>
   );
 }

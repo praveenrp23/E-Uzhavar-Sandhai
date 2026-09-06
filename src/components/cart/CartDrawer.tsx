@@ -60,22 +60,31 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
   // Completed Order State
   const [completedOrder, setCompletedOrder] = useState<Order | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   if (!isOpen) return null;
 
   const { subtotal, totalWeightKg, discount, deliveryFee, total } = getCartTotal();
 
-  const handlePlaceOrder = () => {
-    const order = checkout({
-      address,
-      district,
-      pincode,
-      phone,
-      buyerName,
-      paymentMethod,
-    });
-    if (order) {
-      setCompletedOrder(order);
+  const handlePlaceOrder = async () => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    try {
+      const order = await checkout({
+        address,
+        district,
+        pincode,
+        phone,
+        buyerName,
+        paymentMethod,
+      });
+      if (order) {
+        setCompletedOrder(order);
+      }
+    } catch (err) {
+      console.error('Failed to checkout:', err);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -136,27 +145,27 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               <div className="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-zinc-700">
                 <span className="text-slate-500 dark:text-zinc-400">Confirmation Token</span>
                 <span className="text-[#0c831f] dark:text-emerald-400 font-bold">
-                  {completedOrder.paymentConfirmation.referenceId}
+                  {completedOrder.paymentConfirmation?.referenceId || 'CONF-VERIFIED'}
                 </span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-slate-500 dark:text-zinc-400">Payment Type</span>
                 <span className="text-slate-800 dark:text-zinc-200 font-medium">
-                  {completedOrder.paymentConfirmation.method} (UI Only)
+                  {completedOrder.paymentConfirmation?.method || completedOrder.buyerType || 'Simulated COD'} (UI Only)
                 </span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-slate-500 dark:text-zinc-400">Total Produce Weight</span>
-                <span className="text-slate-800 dark:text-zinc-200 font-medium">{completedOrder.totalWeightKg} kg</span>
+                <span className="text-slate-800 dark:text-zinc-200 font-medium">{completedOrder.totalWeightKg ?? totalWeightKg} kg</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-slate-500 dark:text-zinc-400">Total Invoice Value</span>
-                <span className="text-[#0c831f] dark:text-emerald-400 font-bold text-sm">₹{completedOrder.totalAmount}</span>
+                <span className="text-[#0c831f] dark:text-emerald-400 font-bold text-sm">₹{completedOrder.totalAmount ?? total}</span>
               </div>
               <div className="flex justify-between items-start pt-1 border-t border-slate-200 dark:border-zinc-700">
                 <span className="text-slate-500 dark:text-zinc-400 shrink-0 mr-2">Delivery Address</span>
                 <span className="text-slate-800 dark:text-zinc-200 text-right font-medium truncate">
-                  {completedOrder.deliveryAddress}, {completedOrder.deliveryDistrict}
+                  {completedOrder.deliveryAddress || address}, {completedOrder.deliveryDistrict || district}
                 </span>
               </div>
             </div>
@@ -514,11 +523,23 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 </div>
 
                 <button
+                  disabled={isSubmitting}
                   onClick={handlePlaceOrder}
-                  className="w-full py-3.5 px-4 rounded-xl bg-[#0c831f] hover:bg-[#0a6e1a] text-white font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                  className={`w-full py-3.5 px-4 rounded-xl bg-[#0c831f] hover:bg-[#0a6e1a] text-white font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer ${
+                    isSubmitting ? 'opacity-75 cursor-wait' : ''
+                  }`}
                 >
-                  <CheckCircle2 className="w-5 h-5" />
-                  Place Order &bull; UI Confirm (₹{total})
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <span>Verifying &amp; Placing Order...</span>
+                    </>
+                  ) : (
+                    <>
+                      <CheckCircle2 className="w-5 h-5" />
+                      <span>Place Order &bull; UI Confirm (₹{total})</span>
+                    </>
+                  )}
                 </button>
               </div>
             )}

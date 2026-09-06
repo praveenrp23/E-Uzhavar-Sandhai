@@ -99,8 +99,8 @@ export const AdminDashboard: React.FC = () => {
     });
 
     orders.forEach((o) => {
-      o.items.forEach((i) => {
-        const dist = i.item.originDistrict || 'Other';
+      (o.items || []).forEach((i) => {
+        const dist = i.item?.originDistrict || 'Other';
         if (map[dist]) {
           map[dist].ordersCount += 1;
         }

@@ -395,12 +395,14 @@ export const BulkBuyerDashboard: React.FC<BulkBuyerDashboardProps> = ({
                     <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-zinc-800/60 border border-slate-200 dark:border-zinc-700/60">
                       <span className="text-xs font-semibold text-slate-700 dark:text-zinc-300 block mb-2">Crate Allocations:</span>
                       <div className="space-y-1.5">
-                        {order.items.map((i) => (
-                          <div key={i.produceId} className="flex justify-between text-slate-700 dark:text-zinc-300">
+                        {(order.items || []).map((i, idx) => (
+                          <div key={i.produceId || idx} className="flex justify-between text-slate-700 dark:text-zinc-300">
                             <span>
-                              {i.item.name} ({i.quantityKg}kg)
+                              {i.item?.name || 'Produce Item'} ({i.quantityKg}kg)
                             </span>
-                            <span className="font-semibold text-slate-900 dark:text-zinc-100">₹{i.item.pricePerKg * i.quantityKg}</span>
+                            <span className="font-semibold text-slate-900 dark:text-zinc-100">
+                              ₹{(i.item?.pricePerKg || 0) * (i.quantityKg || 1)}
+                            </span>
                           </div>
                         ))}
                       </div>

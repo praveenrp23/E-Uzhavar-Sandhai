@@ -123,8 +123,7 @@ export const FpoDashboard: React.FC = () => {
         grade,
         description: description || `Freshly harvested ${name} (${tamilName}) directly from ${originPlace}.`,
         imageUrl,
-        fpoId: currentUser?.id || 'fpo-1',
-        fpoName: currentUser?.fpoName || 'Tamil Nadu Uzhavar Producer Collective',
+        shelfLifeDays: category === 'leafy_greens' ? 2 : category === 'vegetables' ? 5 : 7,
       });
     }
 

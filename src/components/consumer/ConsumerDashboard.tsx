@@ -64,9 +64,16 @@ export const ConsumerDashboard: React.FC<ConsumerDashboardProps> = ({
   });
 
   // Filter consumer orders
-  const consumerOrders = orders.filter(
-    (o) => o.buyerType === 'consumer' && (currentUser ? o.buyerId === currentUser.id || o.buyerPhone === currentUser.phone : true)
-  );
+  const consumerOrders = orders.filter((o) => {
+    if (o.buyerType !== 'consumer') return false;
+    if (!currentUser) return true;
+    return (
+      o.buyerId === currentUser.id ||
+      o.buyerPhone === currentUser.phone ||
+      o.buyerId === 'guest' ||
+      !o.buyerId
+    );
+  });
 
   const categories: { id: string; label: string; icon: string }[] = [
     { id: 'all', label: 'All Fresh', icon: '🌾' },
@@ -463,9 +470,11 @@ export const ConsumerDashboard: React.FC<ConsumerDashboardProps> = ({
                             Order #{order.orderNumber}
                           </span>
                           <span
-                            className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${statusBadges[order.status]?.color}`}
+                            className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                              statusBadges[order.status]?.color || 'bg-slate-100 text-slate-700 dark:bg-zinc-800 dark:text-zinc-300'
+                            }`}
                           >
-                            {statusBadges[order.status]?.label}
+                            {statusBadges[order.status]?.label || order.status}
                           </span>
                         </div>
                         <div className="text-xs text-slate-500 dark:text-zinc-400 mt-1">
@@ -488,7 +497,7 @@ export const ConsumerDashboard: React.FC<ConsumerDashboardProps> = ({
                         Live Tracking History
                       </span>
                       <div className="space-y-2.5 text-xs">
-                        {order.trackingHistory.map((step, idx) => (
+                        {(order.trackingHistory || []).map((step, idx) => (
                           <div key={idx} className="flex items-start gap-2.5">
                             <div className="w-2 h-2 rounded-full bg-[#0c831f] dark:bg-emerald-400 mt-1 shrink-0" />
                             <div className="flex-1">
@@ -510,13 +519,13 @@ export const ConsumerDashboard: React.FC<ConsumerDashboardProps> = ({
                           Items in Basket ({order.totalWeightKg} kg):
                         </span>
                         <div className="space-y-1.5">
-                          {order.items.map((i) => (
-                            <div key={i.produceId} className="flex justify-between text-slate-700 dark:text-zinc-300">
+                          {(order.items || []).map((i, idx) => (
+                            <div key={i.produceId || idx} className="flex justify-between text-slate-700 dark:text-zinc-300">
                               <span>
-                                {i.item.name} ({i.quantityKg}kg)
+                                {i.item?.name || 'Produce Item'} ({i.quantityKg}kg)
                               </span>
                               <span className="font-semibold text-slate-900 dark:text-zinc-100">
-                                ₹{i.item.pricePerKg * i.quantityKg}
+                                ₹{(i.item?.pricePerKg || 0) * (i.quantityKg || 1)}
                               </span>
                             </div>
                           ))}

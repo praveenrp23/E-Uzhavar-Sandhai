@@ -174,7 +174,7 @@ export const LogisticsDashboard: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
               {availableRequests.map((order) => {
                 const fpoHubOrigins = Array.from(
-                  new Set(order.items.map((i) => i.item.originPlace || `${i.item.originDistrict} Hub`))
+                  new Set((order.items || []).map((i) => i.item?.originPlace || `${i.item?.originDistrict || 'Tamil Nadu'} Hub`))
                 ).join(', ');
 
                 return (
@@ -241,9 +241,9 @@ export const LogisticsDashboard: React.FC = () => {
                       <div className="mt-3 p-3 rounded-xl bg-slate-50 dark:bg-zinc-800/60 border border-slate-200 dark:border-zinc-700/60 text-xs text-slate-700 dark:text-zinc-300">
                         <span className="text-slate-500 dark:text-zinc-400 block mb-1.5 font-semibold text-[11px] uppercase">Produce in Manifest:</span>
                         <div className="flex flex-wrap gap-1.5">
-                          {order.items.map((i) => (
-                            <span key={i.produceId} className="px-2.5 py-0.5 rounded-lg bg-white dark:bg-zinc-700 border border-slate-200 dark:border-zinc-600 text-slate-800 dark:text-zinc-200 font-medium text-xs">
-                              {i.item.name} ({i.quantityKg}kg)
+                          {(order.items || []).map((i, idx) => (
+                            <span key={i.produceId || idx} className="px-2.5 py-0.5 rounded-lg bg-white dark:bg-zinc-700 border border-slate-200 dark:border-zinc-600 text-slate-800 dark:text-zinc-200 font-medium text-xs">
+                              {i.item?.name || 'Produce Item'} ({i.quantityKg}kg)
                             </span>
                           ))}
                         </div>
